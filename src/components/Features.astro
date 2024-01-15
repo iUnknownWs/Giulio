@@ -1,0 +1,77 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const features = [
+  {
+    name: "Eventos culturales y recreacionales",
+    description:
+      "Asiste a los eventos que nosotros organizamos en el Centro Historico de Valencia, vive nuevas experiencias y aprende sobre la historia que abarca el casco historico de la ciudad.",
+    icon: "heroicons-outline:calendar",
+  },
+  {
+    name: "Jueves de Foro",
+    description:
+      'Semanalmente en el Centro de Artes Vivas "Alexis Mujica", se realizan Foros en donde se expone y se discute sobre diversos temas de ambito turistico y recreacional, a los cuales cualquiera puede asistir de forma gratuita.',
+    icon: "heroicons-outline:chat-alt-2",
+  },
+  {
+    name: "Rutas turisticas",
+    description:
+      "Visita diferentes ubicaciones de interes historico del centro de la ciudad de Valencia, en donde nosotros planificamos las rutas y te enseñamos sobre el pasado y la historia que se desenvuelve en el lugar.",
+    icon: "heroicons-outline:map",
+  },
+  {
+    name: "Exposicion artistica y cultural",
+    description:
+      "Cosntantemente organizamos en conjunto con otros grupos artisticos, historicos y culturales de Valencia, una exposicion de diferentes obras realizadas por diversos artistas en donde todos estan invitados a presenciar en FUNDATUR.",
+    icon: "heroicons-outline:photograph",
+  },
+];
+---
+
+<div class="py-12">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="lg:text-center">
+      <p
+        class="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-primary sm:text-4xl"
+      >
+        Nuestras Actividades
+      </p>
+      <p
+        class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto"
+      >
+        Semanalmente se realizan eventos culturales y recreativos en donde
+        cualquier persona puede participar, sientete libre de asistir a las
+        actividades que organizamos.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <dl
+        class="space-y-10 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-10 md:space-y-0"
+      >
+        {
+          features.map((feature) => (
+            <div class="bg-base-200 p-4 rounded">
+              <dt>
+                <div class="absolute flex h-12 w-12 items-center justify-center rounded-md bg-primary text-white">
+                  <Icon
+                    class="h-6 w-6"
+                    aria-hidden="true"
+                    name={feature.icon}
+                  />
+                </div>
+                <p class="ml-16 text-lg font-medium leading-6 text-primary">
+                  {feature.name}
+                </p>
+              </dt>
+              <dd class="ml-16 mt-2 text-base text-gray-600 w-[500px]">
+                {feature.description}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+</div>
