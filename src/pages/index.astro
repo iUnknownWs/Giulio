@@ -1,14 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import Hero from "../components/Hero.astro";
 import Features from "../components/Features.astro";
+import Map from "../components/Map.astro";
 ---
 
 <Layout title="Fundatur">
   <main class="w-full">
     <Hero />
     <Features />
-    
+    <div class="flex flex-col justify-center items-center pb-8">
+      <div class="flex flex-row justify-center items-center gap-4">
+        <button class="btn btn-primary mb-4">Ver Eventos</button>
+        <button class="btn btn-primary mb-4">Ver Inventario Turistico</button>
+      </div>
+      <Map />
+    </div>
   </main>
 </Layout>
