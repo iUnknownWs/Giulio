@@ -1,39 +1,38 @@
-<div class="flex flex-col items-center justify-center">
-    <p class="mt-2 mb-2 text-3xl font-extrabold leading-8 tracking-tight text-primary sm:text-4xl">
-        Noticias
+---
+import { BlogCard } from "./Card";
+---
+
+<div class="flex flex-col">
+  <div
+    class="w-full py-12 text-center bg-gradient-to-b from-base-200 to-base-100"
+  >
+    <p
+      class="mt-2 text-xl font-bold leading-8 tracking-tight text-primary sm:text-xl"
+    >
+      Ultimas Noticias Publicadas
     </p>
-    <p class="mb-8 text-3xl font-medium leading-8 tracking-tight text-primary sm:text-2xl">
-        Todas las noticias recientes relacionadas con la cultura de nuestra Valencia
+    <p
+      class="mt-2 mb-2 text-3xl font-extrabold leading-8 tracking-tight text-primary sm:text-4xl"
+    >
+      Noticias Culturales
     </p>
-    <div class="flex flex-row gap-10 flex-wrap">
-        <div class="card bg-white shadow-xl">
-            <figure class="h-[300px] w-[300px]"><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
-            <div class="card-body">
-              <h2 class="card-title">New album is released!</h2>
-              <p>Click the button to listen on Spotiwhy app.</p>
-            </div>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary">Listen</button>
-            </div>
-        </div>
-        <div class="card card-compact bg-primary text-white shadow-xl">
-            <figure class="h-[300px] w-[300px]"><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
-            <div class="card-body">
-              <h2 class="card-title">New album is released!</h2>
-              <p>Click the button to listen on Spotiwhy app.</p>
-            </div>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary">Listen</button>
-              </div>
-        </div>
-        <div class="card card-compact bg-base-200 shadow-xl">
-            <figure class="h-[300px] w-[300px]"><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
-            <div class="card-body">
-              <h2 class="card-title">New album is released!</h2>
-              <p>Click the button to listen on Spotiwhy app.</p>
-            </div>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary">Listen</button>
-              </div>
+    <p
+      class="text-lg font-medium leading-8 tracking-tight text-primary sm:text-lg"
+    >
+      Todas las noticias recientes relacionadas con la cultura de nuestra
+      Valencia con el objetivo de mantener a la comunidad
+    </p>
+    <p
+      class="mb-12 text-lg font-medium leading-8 tracking-tight text-primary sm:text-lg"
+    >
+      Informada sobre los eventos y actividades culturales que se están llevando
+      a cabo en la ciudad.
+    </p>
+    <div class="grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2 xl:grid-cols-3 2xl:mx-28 ">
+      <BlogCard client:idle />
+      <BlogCard client:idle />
+      <BlogCard client:idle />
+      <BlogCard client:idle />
     </div>
+  </div>
 </div>
