@@ -1,4 +1,7 @@
 {
-  "recommendations": ["astro-build.astro-vscode"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "blair-c.tailwind-to-css-snippets"
+  ],
   "unwantedRecommendations": []
 }
