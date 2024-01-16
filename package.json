@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.4.1",
     "@astrojs/tailwind": "^5.1.0",
+    "@googlemaps/js-api-loader": "^1.16.2",
     "@iconify-json/heroicons-outline": "^1.1.10",
     "astro": "^4.1.2",
     "astro-icon": "^1.0.2",
@@ -19,6 +20,7 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.54.10",
     "daisyui": "^4.6.0"
   }
 }
