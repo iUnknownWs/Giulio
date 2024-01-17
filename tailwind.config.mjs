@@ -3,9 +3,23 @@
 const withMT = require("@material-tailwind/react/utils/withMT");
 
 module.exports = withMT({
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', './node_modules/preline/preline.js',],
 	theme: {
-		extend: {},
+		colors: {
+			"primary": "#6a012d",
+			"secondary": "#4f0020",
+			"accent": "#830035",
+			"neutral": "#4f0020",
+			"base-100": "#fee5f4",
+			"info": "#ffffff",
+			"success": "#830035",
+			"warning": "#ffffff",
+			"error": "#ffffff",
+		},
+		extend: {
+			colors: {
+			}
+		},
 	},
 	daisyui: {
 		themes: [
@@ -33,5 +47,5 @@ module.exports = withMT({
 			},
 		],
 	},
-	plugins: [require("daisyui")],
+	plugins: [require("daisyui"), require('preline/plugin'),],
 });

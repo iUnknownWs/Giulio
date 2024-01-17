@@ -24,6 +24,9 @@ export function BlogCard() {
         />
       </CardHeader>
       <CardBody>
+        <Typography variant="h7" color="gray" className="mb-0 uppercase">
+          startups
+        </Typography>
         <Typography variant="h4" color="blue-gray">
           UI/UX Review Check
         </Typography>
