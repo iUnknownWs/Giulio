@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="my-12" @submit.prevent="handleSubmit">
+    <form class="my-8" @submit.prevent="handleSubmit">
       <div className="max-w-xl mx-auto">
         <div class="mb-5">
           <!-- <label>
@@ -11,10 +11,10 @@
           </label> -->
           <label class="form-control w-full max-w-xs">
             <div class="label">
-              <span class="label-text">Titulo</span>
+              <span class="label-text font-medium">Titulo</span>
             </div>
             <input type="text" placeholder="Introduzca el titulo"
-              class="input input-bordered w-full max-w-xs input-primary" v-model="title" required />
+              class="input input-bordered w-full max-w-xs input-primary bg-white" v-model="title" required />
           </label>
         </div>
         <div class="mb-5">
@@ -26,10 +26,10 @@
           </label> -->
           <label class="form-control">
             <div class="label">
-              <span class="label-text">Descripcion</span>
+              <span class="label-text font-medium">Descripcion</span>
             </div>
-            <textarea class="textarea textarea-bordered h-24 textarea-primary textarea-md" placeholder="Descripcion"
-              v-model="description" required></textarea>
+            <textarea class="textarea textarea-bordered h-24 textarea-primary bg-white textarea-md"
+              placeholder="Descripcion" v-model="description" required></textarea>
           </label>
         </div>
         <div class="mb-5">
@@ -41,10 +41,10 @@
           </label> -->
           <label class="form-control">
             <div class="label">
-              <span class="label-text">Contenido</span>
+              <span class="label-text font-medium">Contenido</span>
             </div>
-            <textarea class="textarea textarea-bordered h-24 textarea-primary textarea-md" placeholder="Contenido"
-              v-model="content" required></textarea>
+            <textarea class="textarea textarea-bordered h-24 textarea-primary bg-white textarea-md"
+              placeholder="Contenido" v-model="content" required></textarea>
           </label>
         </div>
         <div class="mb-5">
@@ -56,9 +56,9 @@
           </label> -->
           <label class="form-control w-full max-w-xs">
             <div class="label">
-              <span class="label-text">Seleccione su imagen</span>
+              <span class="label-text font-medium">Portada</span>
             </div>
-            <input type="file" accept="image/*" class="file-input file-input-bordered w-full max-w-xs"
+            <input type="file" accept="image/*" class="file-input file-input-bordered w-full max-w-xs bg-white"
               @change="previewFiles" required />
           </label>
         </div>
@@ -73,9 +73,9 @@
           </label> -->
           <label class="form-control w-full max-w-xs">
             <div class="label">
-              <span class="label-text">Autor</span>
+              <span class="label-text font-medium">Autor</span>
             </div>
-            <select class="select select-bordered select-primary" v-model="selauthor" name="author" id="author">
+            <select class="select select-bordered select-primary bg-white" v-model="selauthor" name="author" id="author">
               <option disabled selected>Seleccione un Autor</option>
               <option v-for="author in authors" :value="author.id">{{ author.name }}</option>
             </select>
@@ -83,7 +83,7 @@
         </div>
         <!-- <button
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mx-auto">Send</button> -->
-        <button class="btn btn-active btn-primary">Enviar Formulario</button>
+        <button class="btn btn-active btn-primary text-white">Enviar Formulario</button>
       </div>
     </form>
   </div>
