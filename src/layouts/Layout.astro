@@ -19,12 +19,12 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
+  <NavBar />
   <body>
-    <NavBar />
     <slot />
   </body>
   <Footer />
-</html>
+  </html>
 <style is:global>
   :root {
     --accent: 136, 58, 234;
