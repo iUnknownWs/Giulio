@@ -3,12 +3,6 @@
     <form class="my-8" @submit.prevent="handleSubmit">
       <div className="max-w-xl mx-auto">
         <div class="mb-5">
-          <!-- <label>
-            Titulo
-            <input
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                type="text" v-model="title" required />
-          </label> -->
           <label class="form-control w-full max-w-xs">
             <div class="label">
               <span class="label-text font-medium">Titulo</span>
@@ -18,12 +12,6 @@
           </label>
         </div>
         <div class="mb-5">
-          <!-- <label>
-            Description
-            <input
-              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              type="message" v-model="description" required />
-          </label> -->
           <label class="form-control">
             <div class="label">
               <span class="label-text font-medium">Descripcion</span>
@@ -33,12 +21,6 @@
           </label>
         </div>
         <div class="mb-5">
-          <!-- <label>
-            Content
-            <input
-              class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              type="message" v-model="content" required />
-          </label> -->
           <label class="form-control">
             <div class="label">
               <span class="label-text font-medium">Contenido</span>
@@ -48,12 +30,6 @@
           </label>
         </div>
         <div class="mb-5">
-          <!-- <label>
-            Cover
-            <input
-              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-              type="file" accept="image/*" @change="previewFiles" required />
-          </label> -->
           <label class="form-control w-full max-w-xs">
             <div class="label">
               <span class="label-text font-medium">Portada</span>
@@ -63,14 +39,6 @@
           </label>
         </div>
         <div class="mb-5">
-          <!-- <label>
-            Author
-            <select v-model="selauthor"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              name="author" id="author">
-              <option v-for="author in authors" :value='author.id'> {{ author.name }} </option>
-            </select>
-          </label> -->
           <label class="form-control w-full max-w-xs">
             <div class="label">
               <span class="label-text font-medium">Autor</span>
@@ -81,9 +49,8 @@
             </select>
           </label>
         </div>
-        <!-- <button
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mx-auto">Send</button> -->
-        <button class="btn btn-active btn-primary text-white">Enviar Formulario</button>
+        <div class="flex justify-end mt-8"><button class="btn btn-active btn-primary text-white">Enviar
+            Formulario</button></div>
       </div>
     </form>
   </div>
@@ -96,7 +63,7 @@ export default {
     return {
       title: '',
       description: '',
-      coverSVG: [],
+      image: [],
       content: '',
       selauthor: '',
       authors: [],
@@ -105,12 +72,12 @@ export default {
   },
   methods: {
     previewFiles(event) {
-      this.coverSVG = event.target.files[0]
+      this.image = event.target.files[0]
       const formData = new FormData()
-      formData.append('image', this.coverSVG)
-      formData.append('name', this.coverSVG.name)
+      formData.append('image', this.image)
+      formData.append('name', this.image.name)
 
-      fetch('http://localhost:8000/api/coverimage/',
+      fetch('http://localhost:8000/image/',
         {
           method: 'POST',
           body: formData
@@ -122,7 +89,7 @@ export default {
         .catch(error => console.error(error));
     },
     async getAuthors() {
-      let response = await fetch('http://127.0.0.1:8000/api/author/')
+      let response = await fetch('http://127.0.0.1:8000/author/')
       let data = await response.json()
       this.authors = data
     },
@@ -131,11 +98,14 @@ export default {
         title: this.title,
         description: this.description,
         author: parseInt(this.selauthor),
-        coverSVG: this.data.id,
+        image: this.data.id,
         content: this.content,
       };
 
-      fetch('http://localhost:8000/api/mdpost/', {
+      console.log(formData);
+      console.log(this.selauthor);
+
+      fetch('http://localhost:8000/blogpost/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -145,9 +115,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.form = data;
-          console.log(this.form.author_details.name);
-        }).then(() => {
-          this.generateMarkdownFile();
+          console.log(data);
         })
         .catch(error => {
           console.error(error);
