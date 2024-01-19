@@ -77,7 +77,7 @@ export default {
       formData.append('image', this.image)
       formData.append('name', this.image.name)
 
-      fetch('http://localhost:8000/image/',
+      fetch(`${import.meta.env.PUBLIC_DB}/image/`,
         {
           method: 'POST',
           body: formData
@@ -89,7 +89,7 @@ export default {
         .catch(error => console.error(error));
     },
     async getAuthors() {
-      let response = await fetch('http://127.0.0.1:8000/author/')
+      let response = await fetch(`${import.meta.env.PUBLIC_DB}/author/`)
       let data = await response.json()
       this.authors = data
     },
@@ -102,7 +102,7 @@ export default {
         content: this.content,
       };
 
-      fetch('http://localhost:8000/blogpost/', {
+      fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

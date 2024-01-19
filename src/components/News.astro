@@ -20,7 +20,7 @@ export interface Details {
   uploadDate?: Date;
 }
 
-await fetch("http://127.0.0.1:8000/blogpost/")
+await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
   .then((res) => res.json())
   .then((data) => {
     blogs = data;
