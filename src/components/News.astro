@@ -1,5 +1,30 @@
 ---
 import { BlogCard } from "./Card";
+
+let blogs: BlogPost[] = [];
+
+export interface BlogPost {
+  id: number;
+  author_details: Details;
+  image_details: Details;
+  title: string;
+  description: string;
+  content: string;
+  publishDate: Date;
+}
+
+export interface Details {
+  id: number;
+  name: string;
+  image: string;
+  uploadDate?: Date;
+}
+
+await fetch("http://127.0.0.1:8000/blogpost/")
+  .then((res) => res.json())
+  .then((data) => {
+    blogs = data;
+  });
 ---
 
 <div class="flex flex-col bg-base-100">
@@ -32,9 +57,19 @@ import { BlogCard } from "./Card";
   <div
     class="grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2 xl:grid-cols-3 2xl:mx-28"
   >
-    <BlogCard client:idle />
-    <BlogCard client:idle />
-    <BlogCard client:idle />
-    <BlogCard client:idle />
+    {
+      blogs.map((blog) => (
+        <BlogCard
+          client:load
+          title={blog.title}
+          img={blog.image_details.image}
+          alt={blog.image_details.name}
+          description={blog.description}
+          author={blog.author_details.name}
+          avatar={blog.author_details.image}
+          date={blog.publishDate}
+        />
+      ))
+    }
   </div>
 </div>

@@ -56,6 +56,9 @@ dependencies:
   vue:
     specifier: ^3.4.14
     version: 3.4.14(typescript@5.3.3)
+  vue-localstorage:
+    specifier: ^0.6.2
+    version: 0.6.2
 
 devDependencies:
   '@types/google.maps':
@@ -5047,6 +5050,10 @@ packages:
 
   /vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
+    dev: false
+
+  /vue-localstorage@0.6.2:
+    resolution: {integrity: sha512-29YQVVkIdoS6BZBCJAyu9d0OR0eKSm5gk5OjsLssV1+NM4zJnf9cxhN1AVeXkUHJLqOonECweuaR8PZ2x307dw==}
     dev: false
 
   /vue@3.4.14(typescript@5.3.3):

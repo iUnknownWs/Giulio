@@ -1,5 +1,5 @@
 ---
-import NavBar from "../components/NavBar.astro";
+import NavBar from "../components/NavBar.vue";
 import Footer from "../components/Footer.astro";
 
 interface Props {
@@ -18,8 +18,9 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
   </head>
-  <NavBar />
+  <NavBar client:only />
   <body>
     <slot />
   </body>

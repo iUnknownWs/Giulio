@@ -102,9 +102,6 @@ export default {
         content: this.content,
       };
 
-      console.log(formData);
-      console.log(this.selauthor);
-
       fetch('http://localhost:8000/blogpost/', {
         method: 'POST',
         headers: {
@@ -115,7 +112,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.form = data;
-          console.log(data);
+          window.location.href = '/';
         })
         .catch(error => {
           console.error(error);

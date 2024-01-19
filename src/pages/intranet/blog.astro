@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Form from "../../components/Form.vue";
+---
+
+<Layout title="Blog">
+  <div class="flex justify-center">
+    <div class="my-16 bg-white shadow-lg rounded max-w-xl p-8">
+      <h1 class="text-4xl text-primary font-bold text-center mt-4 leading-none">
+        Formulario para añadir Blog
+      </h1>
+      <Form client:only />
+    </div>
+  </div>
+</Layout>

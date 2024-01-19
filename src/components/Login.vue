@@ -34,7 +34,6 @@
         </div>
     </div>
 </template>
-    
 <script>
 export default {
     name: 'Form',
@@ -62,8 +61,7 @@ export default {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data.access);
-                    localStorage.token = data.access;
+                    localStorage.setItem('token', data.access);
                     window.location.href = '/';
                 })
                 .catch(error => {
