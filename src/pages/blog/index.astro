@@ -1,7 +1,33 @@
 ---
+import BlogCard from "../../components/BlogCard.astro";
+import BlogHero from "../../components/BlogHero.astro";
 import Layout from "../../layouts/Layout.astro";
+import type { BlogPost } from "../../env";
+import type { Code } from "astro:components";
+
+let blogs: BlogPost[] = [];
+
+await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
+  .then((res) => res.json())
+  .then((data) => {
+    blogs = data;
+  });
 ---
 
 <Layout title="Blog">
-
+ <div class="flex flex-col rounded-lg justify-center items-center w-full">
+     <BlogHero />
+     {
+        blogs.map((blog) => (
+            <BlogCard title={blog.title},
+                image= {blog.image_details.image},
+                alt= {blog.image_details.name},
+                date= {blog.publishDate},
+                author= {blog.author_details.name},
+                avatar={blog.author_details.image},
+                description= {blog.description}/>
+        ))
+     }
+ </div>
+ 
 </Layout>

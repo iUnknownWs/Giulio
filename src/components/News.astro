@@ -1,24 +1,9 @@
 ---
 import { BlogCard } from "./Card";
+import type { BlogPost } from "../env";
+
 
 let blogs: BlogPost[] = [];
-
-export interface BlogPost {
-  id: number;
-  author_details: Details;
-  image_details: Details;
-  title: string;
-  description: string;
-  content: string;
-  publishDate: Date;
-}
-
-export interface Details {
-  id: number;
-  name: string;
-  image: string;
-  uploadDate?: Date;
-}
 
 await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
   .then((res) => res.json())
