@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+import type { BlogPost } from "../env";
+interface Props {
+    blog: BlogPost
+}
+
+const { blog } = Astro.props;
+---
+
+<div class='relative mx-auto h-[600px] w-full max-w-screen-2xl md:mb-0 rounded-b-lg'>
+    <div
+      class='absolute bottom-0 left-0 z-10 h-full w-full bg-gradient-to-t from-gray-900  to-transparent rounded-b-lg'
+    >
+    </div>
+    <img
+      src={blog.image_details.image}
+      alt='featured image'
+      class='absolute left-0 top-0 z-0 h-full w-full object-cover rounded-b-lg'
+    />
+    <div class='absolute bottom-0 left-0 z-20 p-4 bg-transparent'>
+      <h2 class='text-4xl font-bold leading-tight text-base-200'>
+        {blog.title}
+      </h2>
+      <h2 class='text-xl font-medium italic text-white'>
+        {blog.description}
+      </h2>
+      <span class='mt-3 flex'>
+        {
+          blog.author_details.name && (
+            <span class='mr-6 flex items-center'>
+              <img
+                src={blog.author_details.image}
+                alt={blog.author_details.name}
+                class='mr-2 h-10 w-10 rounded-full object-cover'
+              />
+              <span class='font-semibold text-white'>{blog.author_details.name}</span>
+            </span>
+          )
+        }
+        <span class='mr-6 flex items-center'>
+          <Icon class='mr-1 h-6 w-6 text-white' name='heroicons-outline:calendar' />
+          <span class='ml-1 font-semibold text-white'>
+            {new Date(blog.publishDate).toLocaleDateString("en-GB")}
+          </span>
+        </span>
+      </span>
+    </div>
+  </div>

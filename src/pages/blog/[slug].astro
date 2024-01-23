@@ -1,7 +1,36 @@
 ---
 import type { GetStaticPaths } from "astro";
-export const getStaticPaths = (() => {
-    
-    return [];
-}) satisfies GetStaticPaths;
+import type { BlogPost } from "../../env";
+import Layout from "../../layouts/Layout.astro";
+import BlogHero from "../../components/BlogHero.astro";
+import BlogH from "../../components/BlogH.astro";
+export async function getStaticPaths() {
+  let blogs: BlogPost[] = [];
+  await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
+    .then((res) => res.json())
+    .then((data) => {
+      blogs = data;
+    });
+  return blogs.map((blog) => ({
+    params: { slug: blog.title },
+    props: { blog },
+  }));
+}
+
+const { blog } = Astro.props;
 ---
+
+<Layout title={blog.title}>
+  <main>
+    <article class="bg-gradient-to-r from-base-100 via-base-200 to-base-100">
+      <header>
+        <BlogH blog={blog} />
+      </header>
+      <section class="prose mx-auto py-8 max-w-screen-2xl px-4">
+        <!-- {blog.image_details.id && <Images images={frontmatter.images} />} -->
+        <h2 class="font-bold text-4xl mb-4">{blog.title}</h2>
+        <p class="font-medium text-xl leading-9">{blog.description}</p>
+      </section>
+    </article>
+  </main>
+</Layout>
