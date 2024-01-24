@@ -15,7 +15,7 @@
           <li><a class="hover:bg-base-200 font-bold" href="/contact">Contacto</a></li>
         </ul>
       </div>
-      <a class="btn btn-ghost text-xl hover:bg-base-200" href="/"><img width="120" src="../img/icon.png" alt="logo" /></a>
+      <a class="btn btn-ghost text-xl hover:bg-base-200" href="/"><img width="120" src="/icon.png" alt="logo" /></a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
