@@ -1,6 +1,7 @@
 ---
-import { BlogCard } from "./Card";
+
 import type { BlogPost } from "../env";
+import BlogCard from "./BlogCard.astro";
 
 
 let blogs: BlogPost[] = [];
@@ -14,7 +15,7 @@ await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
 
 <div class="flex flex-col bg-base-100">
   <div
-    class="w-full py-12 text-center bg-gradient-to-b from-base-200 to-base-100"
+    class="w-full pt-12 text-center bg-gradient-to-b from-base-200 to-base-100"
   >
     <p
       class="mt-2 text-xl font-bold leading-8 tracking-tight text-primary sm:text-xl"
@@ -39,24 +40,17 @@ await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
       a cabo en la ciudad.
     </p>
   </div>
-  <div
-    class="grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2 xl:grid-cols-3 2xl:mx-28"
-  >
+  <section class='py-8 mx-auto max-w-screen-2xl px-4 grid grid-cols-1 lg:grid-cols-3'>
     {
-      blogs.map((blog) => (
-        <a href=`/blog/${blog.title}`>
-          <BlogCard
-            client:load
-            title={blog.title}
-            img={blog.image_details.image}
-            alt={blog.image_details.name}
-            description={blog.description}
-            author={blog.author_details.name}
-            avatar={blog.author_details.image}
-            date={blog.publishDate}
-          />
-        </a>
-      ))
+       blogs.map((blog) => (
+           <BlogCard title={blog.title},
+               image= {blog.image_details.image},
+               alt= {blog.image_details.name},
+               date= {blog.publishDate},
+               author= {blog.author_details.name},
+               avatar={blog.author_details.image},
+               description= {blog.description}/>
+       ))
     }
-  </div>
+  </section>
 </div>
