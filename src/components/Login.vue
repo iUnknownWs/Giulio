@@ -11,7 +11,7 @@
                             <div class="label">
                                 <span class="label-text font-medium">Usuario</span>
                             </div>
-                            <input type="text" placeholder="Introduzca el titulo"
+                            <input type="text" placeholder="Introduzca el Usuario"
                                 class="input input-bordered w-full max-w-xs input-primary bg-white" v-model="username"
                                 required />
                         </label>
@@ -21,7 +21,7 @@
                             <div class="label">
                                 <span class="label-text font-medium">Contraseña</span>
                             </div>
-                            <input type="password" placeholder="Introduzca el titulo"
+                            <input type="password" placeholder="Introduzca la contraseña"
                                 class="input input-bordered w-full max-w-xs input-primary bg-white" v-model="password"
                                 required />
                         </label>
