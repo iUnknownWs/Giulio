@@ -7,5 +7,13 @@ import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon(), react(), vue()]
+  integrations: [tailwind(), icon(), react(), 
+    vue({
+      template: {
+        transformAssetUrls: {
+          base: null,
+          includeAbsolute: false,
+        },
+      },
+    })]
 });
