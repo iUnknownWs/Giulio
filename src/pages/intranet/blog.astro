@@ -1,10 +1,21 @@
 ---
+import type { BlogPost } from "../../env";
 import Layout from "../../layouts/Layout.astro";
 import Form from "../../components/Form.vue";
+import BlogAdmin from "../../components/BlogAdmin.astro";
+
+
+let blogs: BlogPost[] = [];
+
+await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
+  .then((res) => res.json())
+  .then((data) => {
+    blogs = data;
+  });
 ---
 
 <Layout title="Blog">
-  <div class="flex justify-center">
+  <div class="flex justify-center mx-5">
     <div class="my-16 bg-white shadow-lg rounded max-w-xl p-8">
       <h1 class="text-4xl text-primary font-bold text-center mt-4 leading-none">
         Formulario para añadir Blog
@@ -12,4 +23,21 @@ import Form from "../../components/Form.vue";
       <Form client:only />
     </div>
   </div>
+  <h1 class="text-4xl text-primary font-bold text-center mt-4 leading-none">
+    Eliminar entradas del Blog
+  </h1>
+  <section class='py-8 mx-auto max-w-screen-2xl px-4 grid grid-cols-1 lg:grid-cols-3'>
+    {
+       blogs.map((blog) => (
+           <BlogAdmin title={blog.title},
+               id={blog.id},
+               image={blog.image_details.image},
+               alt={blog.image_details.name},
+               date={blog.publishDate},
+               author={blog.author_details.name},
+               avatar={blog.author_details.image},
+               description={blog.description}/>
+       ))
+    }
+  </section>
 </Layout>

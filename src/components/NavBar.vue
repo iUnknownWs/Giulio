@@ -7,12 +7,22 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
           </svg>
         </div>
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a class="hover:bg-base-200 font-bold" href="/blog">Blog</a></li>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
+          <li>
+            <a class="hover:bg-base-200 font-bold" href="/blog">Blog</a>
+          </li>
           <li>
             <a class="hover:bg-base-200 font-bold" href="/about">Sobre nosotros</a>
           </li>
-          <li><a class="hover:bg-base-200 font-bold" href="/contact">Contacto</a></li>
+          <li>
+            <a class="hover:bg-base-200 font-bold" href="/contact">Contacto</a>
+          </li>
+          <li>
+            <a class="hover:bg-base-200 font-bold" href="/intranet/blog">Editar Blog</a>
+          </li>
+          <li>
+            <a class="hover:bg-base-200 font-bold" href="/intranet/map">Editar Mapa</a>
+          </li>
         </ul>
       </div>
       <a class="btn btn-ghost text-xl hover:bg-base-200" href="/"><img width="120" src="/icon.png" alt="logo" /></a>
@@ -28,8 +38,8 @@
     </div>
     <div class="navbar-end gap-2">
       <a v-if="!signedin" class="btn hover:bg-base-200" href="/intranet">Intranet</a>
-      <a v-if="signedin" class="btn hover:bg-base-200" href="/intranet/blog">Añadir Blog</a>
-      <a v-if="signedin" class="btn hover:bg-base-200" href="/intranet/map">Editar Mapa</a>
+      <a v-if="signedin" class="btn hover:bg-base-200 hidden lg:flex" href="/intranet/blog">Editar Blog</a>
+      <a v-if="signedin" class="btn hover:bg-base-200 hidden lg:flex" href="/intranet/map">Editar Mapa</a>
       <a v-if="signedin" @click="logout" class="btn btn-primary text-white">Cerrar sesion</a>
     </div>
   </div>

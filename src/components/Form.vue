@@ -112,7 +112,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.form = data;
-          window.location.href = '/';
+          location.reload();
         })
         .catch(error => {
           console.error(error);
