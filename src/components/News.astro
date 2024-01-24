@@ -44,16 +44,18 @@ await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
   >
     {
       blogs.map((blog) => (
-        <BlogCard
-          client:load
-          title={blog.title}
-          img={blog.image_details.image}
-          alt={blog.image_details.name}
-          description={blog.description}
-          author={blog.author_details.name}
-          avatar={blog.author_details.image}
-          date={blog.publishDate}
-        />
+        <a href=`/blog/${blog.title}`>
+          <BlogCard
+            client:load
+            title={blog.title}
+            img={blog.image_details.image}
+            alt={blog.image_details.name}
+            description={blog.description}
+            author={blog.author_details.name}
+            avatar={blog.author_details.image}
+            date={blog.publishDate}
+          />
+        </a>
       ))
     }
   </div>

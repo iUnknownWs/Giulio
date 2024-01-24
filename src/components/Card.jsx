@@ -18,7 +18,7 @@ export function BlogCard(props) {
         />
       </CardHeader>
       <CardBody>
-        <Typography variant="h4" color="blue-gray">
+        <Typography variant="h4"  color="blue-gray">
           {props.title}
         </Typography>
         <Typography variant="lead" color="gray" className="mt-3 font-normal">
