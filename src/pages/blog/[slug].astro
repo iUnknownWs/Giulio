@@ -1,8 +1,6 @@
 ---
-import type { GetStaticPaths } from "astro";
 import type { BlogPost } from "../../env";
 import Layout from "../../layouts/Layout.astro";
-import BlogHero from "../../components/BlogHero.astro";
 import BlogH from "../../components/BlogH.astro";
 export async function getStaticPaths() {
   let blogs: BlogPost[] = [];
@@ -29,7 +27,7 @@ const { blog } = Astro.props;
       <section class="prose mx-auto py-8 max-w-screen-2xl px-4">
         <!-- {blog.image_details.id && <Images images={frontmatter.images} />} -->
         <h2 class="font-bold text-4xl mb-4">{blog.title}</h2>
-        <p class="font-medium text-xl leading-9">{blog.description}</p>
+        <p class="font-medium text-xl leading-9">{blog.content}</p>
       </section>
     </article>
   </main>
