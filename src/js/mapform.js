@@ -7,15 +7,6 @@ async function initMap() {
     const position = { lat: 10.183154152902322, lng: -68.00279953242793 };
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-    const parser = new DOMParser();
-    const glyphImg = document.createElement("img");
-
-    glyphImg.src =
-        "https://developers.google.com/maps/documentation/javascript/examples/full/images/google_logo_g.svg";
-
-    const glyphSvgPinView = new google.maps.marker.PinView({
-        glyph: glyphImg,
-    });
 
     map = new Map(document.getElementById("map"), {
         zoom: 14,
@@ -27,7 +18,6 @@ async function initMap() {
         map: map,
         position: position,
         title: "Fundatur",
-        content: glyphSvgPinView.element,
     });
 }
 

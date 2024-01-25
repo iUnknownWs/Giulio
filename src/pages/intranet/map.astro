@@ -1,5 +1,13 @@
 ---
+import MapForm from "../../components/MapForm.vue";
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="Formulario Mapa" />
+<Layout title="MapForm">
+  <div class="my-16 mx-auto bg-white shadow-lg rounded max-w-lg p-8">
+    <h1 class="text-4xl text-primary font-bold text-center mt-4 leading-none">
+      Formulario para añadir marcador al mapa
+    </h1>
+    <MapForm client:idle />
+  </div>
+</Layout>
