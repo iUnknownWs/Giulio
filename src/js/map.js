@@ -3,13 +3,31 @@
 
 let map;
 
+const eventBtn = document.getElementById("eventBtn");
+const tourBtn = document.getElementById("tourBtn");
+let tab = "event";
+
+eventBtn.addEventListener("click", () => {
+    tab = "event";
+    initMap();
+})
+
+tourBtn.addEventListener("click", () => {
+    tab = "tour";
+    initMap();
+})
+
 async function initMap() {
     const position = { lat: 10.183154152902322, lng: -68.00279953242793 };
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-    const parser = new DOMParser();
     const infoWindow = new google.maps.InfoWindow();
-    const events = [{ position: position, title: "Fundatur", }, { position: { lat: 12, lng: -70 }, title: "Donde esta yan", }];
+    let events = [];
+
+    fetch(`${import.meta.env.PUBLIC_DB}mapmarker/`).then((response) => response.json()).then((data) => {
+        events = data;
+        Markers(events);
+    });
 
     map = new Map(document.getElementById("map"), {
         zoom: 14,
@@ -17,32 +35,54 @@ async function initMap() {
         mapId: "647d707882fb14a3",
     });
 
-    for (const event of events) {
-        const glyphImg = document.createElement("span");
-        glyphImg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="M10.95 18.35L7.4 14.8l1.45-1.45l2.1 2.1l4.2-4.2l1.45 1.45zM5 22q-.825 0-1.412-.587T3 20V6q0-.825.588-1.412T5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588T21 6v14q0 .825-.587 1.413T19 22zm0-2h14V10H5z"/></svg>';
+    function Markers(events) {
+        for (const event of events) {
+            const date = new Date(event.eventDate);
+            const formatdate = date.toLocaleDateString("en-GB");
 
+            function markerContent(bg, border, glyph) {
+                const glyphImg = document.createElement("img");
+                glyphImg.src = glyph;
 
-        const glyphSvgPinView = new google.maps.marker.PinView({
-            scale: 1.4,
-            background: '#6a012d',
-            borderColor: '#4f0020', 
-            glyph: glyphImg,
-        });
+                const glyphSvgPinView = new google.maps.marker.PinView({
+                    scale: 1.4,
+                    background: bg,
+                    borderColor: border,
+                    glyph: glyphImg,
+                });
 
-        const marker = new AdvancedMarkerElement({
-            map,
-            position: event.position,
-            title: event.title,
-            content: glyphSvgPinView.element,
-        })
+                return glyphSvgPinView.element;
+            }
 
-        marker.addListener("click", ({ domEvent, latLng }) => {
-            const { target } = domEvent;
+            function genMarker(event, content) {
+                const marker = new AdvancedMarkerElement({
+                    map,
+                    position: { lat: event.lat, lng: event.long },
+                    title: event.title,
+                    content: content,
+                })
 
-            infoWindow.close();
-            infoWindow.setContent(`<span><strong>${marker.title}</strong> <br/> ${latLng}</span>`);
-            infoWindow.open(marker.map, marker);
-        });
+                marker.addListener("click", () => {
+                    infoWindow.close();
+                    infoWindow.setContent(`
+                    <div>
+                    <p class="font-bold">${event.title}</p>
+                    <p>${event.description}</p>
+                    <p>Fecha del evento: ${formatdate}</p>
+                    </div>
+                    `);
+                    infoWindow.open(marker.map, marker);
+                });
+            }
+
+            if (event.category === 'event' && tab === 'event') {
+                const icon = markerContent('#6a012d', '#4f0020', '/icons/event.svg');
+                genMarker(event, icon);
+            } else if (tab === 'tour' && event.category !== 'event') {
+                const icon = markerContent('#6a012d', '#4f0020', '/icons/event.svg');
+                genMarker(event, icon);
+            }
+        }
     }
 }
 

@@ -40,7 +40,7 @@ document.getElementById("mapForm").addEventListener('submit', (event) => {
     const category = document.getElementById("category").value;
     const lat = document.getElementById("lat").value;
     const long = document.getElementById("long").value;
-    const date = document.getElementById("inputdate").value;
+    const dt = document.getElementById("inputdate").value;
     const author = document.getElementById("selauthor").value;
     const formData = {
         title: title,
@@ -48,7 +48,7 @@ document.getElementById("mapForm").addEventListener('submit', (event) => {
         category: category,
         lat: lat,
         long: long,
-        eventDate: date,
+        eventDate: dt,
         author: author
     };
     fetch(`${import.meta.env.PUBLIC_DB}mapmarker/`, {
