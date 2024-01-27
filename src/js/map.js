@@ -44,8 +44,6 @@ async function initMap() {
             infoWindow.open(marker.map, marker);
         });
     }
-
-
 }
 
 initMap();

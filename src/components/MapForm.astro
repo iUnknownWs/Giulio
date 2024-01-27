@@ -1,0 +1,128 @@
+<div class="my-16 mx-auto bg-white shadow-lg rounded max-w-lg p-8">
+    <h1 class="text-4xl text-primary font-bold text-center mt-4 leading-none">
+      Formulario para añadir marcador al mapa
+    </h1>
+  <form id="mapForm" class="my-8">
+    <div class="max-w-xl mx-auto">
+      <div class="mb-5">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text font-medium">Longitud</span>
+          </div>
+          <input
+            id="long"
+            type="number"
+            step="any"
+            placeholder="Introduzca la longitud de la localizacion"
+            class="input input-bordered w-full max-w-xs input-primary bg-white"
+            v-model="lat"
+            required
+          />
+        </label>
+      </div>
+      <div class="mb-5">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text font-medium">Latitud</span>
+          </div>
+          <input
+            id="lat"
+            type="number"
+            step="any"
+            placeholder="Introduzca la latitud de la localizacion"
+            class="input input-bordered w-full max-w-xs input-primary bg-white"
+            v-model="long"
+            required
+          />
+        </label>
+      </div>
+      <div class="mb-5">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text font-medium">Titulo</span>
+          </div>
+          <input
+            id="title"
+            type="text"
+            placeholder="Introduzca el titulo"
+            class="input input-bordered w-full max-w-xs input-primary bg-white"
+            v-model="title"
+            required
+          />
+        </label>
+      </div>
+      <div class="mb-5">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text font-medium">Fecha del Evento</span>
+          </div>
+          <input
+            id="inputdate"
+            type="date"
+            class="input input-bordered w-full max-w-xs input-primary bg-white"
+            v-model="inputdate"
+            required
+          />
+        </label>
+      </div>
+      <div class="mb-5">
+        <label class="form-control">
+          <div class="label">
+            <span class="label-text font-medium">Descripcion</span>
+          </div>
+          <textarea
+            id="description"
+            class="textarea textarea-bordered h-24 textarea-primary bg-white textarea-md"
+            placeholder="Descripcion"
+            v-model="description"
+            required>
+        </textarea>
+        </label>
+      </div>
+      <div class="mb-5">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text font-medium">Category</span>
+          </div>
+          <select
+            id="category"
+            class="select select-bordered select-primary bg-white"
+            v-model="category"
+            name="category"
+            required
+          >
+            <option disabled selected>Seleccione una categoria</option>
+            <option value="event">Evento</option>
+            <option value="place">Alojamiento</option>
+            <option value="art">Arte</option>
+            <option value="economy">Economia</option>
+            <option value="food">Comida</option>
+            <option value="comms">Comunicacion</option>
+            <option value="nature">Natural</option>
+            <option value="bussines">Negocios</option>
+            <option value="routes">Rutas</option>
+          </select>
+        </label>
+      </div>
+      <div class="mb-5">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text font-medium">Autor</span>
+          </div>
+          <select class="select select-bordered select-primary bg-white" name="author" id="selauthor" required>
+            <option disabled selected>Seleccione un Autor</option>
+          </select>
+        </label>
+      </div>
+      <div class="flex justify-end mt-8">
+        <button class="btn btn-active btn-primary text-white">
+          Enviar Formulario
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+import '../js/mapform.js'
+</script>
