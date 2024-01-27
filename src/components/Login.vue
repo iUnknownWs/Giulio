@@ -52,7 +52,7 @@ export default {
 
             console.log(formData);
 
-            fetch(`${import.meta.env.PUBLIC_DB}/token/`, {
+            fetch(`${import.meta.env.PUBLIC_DB}token/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

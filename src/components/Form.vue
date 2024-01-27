@@ -43,7 +43,7 @@
             <div class="label">
               <span class="label-text font-medium">Autor</span>
             </div>
-            <select class="select select-bordered select-primary bg-white" v-model="selauthor" name="author" id="author">
+            <select class="select select-bordered select-primary bg-white" v-model="selauthor" name="author" id="author" required>
               <option disabled selected>Seleccione un Autor</option>
               <option v-for="author in authors" :value="author.id">{{ author.name }}</option>
             </select>
