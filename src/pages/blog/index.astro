@@ -18,7 +18,7 @@ await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
        <header>
          <BlogHero />
        </header>
-       <section class='py-8 mx-auto max-w-screen-2xl px-4 grid grid-cols-1 lg:grid-cols-3'>
+       <section class='py-8 mx-auto max-w-screen-2xl px-4 grid grid-cols-1 lg:grid-cols-3 min-h-[30vh]'>
          {
             blogs.map((blog) => (
                 <BlogCard title={blog.title},

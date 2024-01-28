@@ -17,10 +17,10 @@
           <li>
             <a class="hover:bg-base-200 font-bold" href="/contact">Contacto</a>
           </li>
-          <li>
+          <li v-if="signedin">
             <a class="hover:bg-base-200 font-bold" href="/intranet/blog">Editar Blog</a>
           </li>
-          <li>
+          <li v-if="signedin">
             <a class="hover:bg-base-200 font-bold" href="/intranet/map">Editar Mapa</a>
           </li>
         </ul>
