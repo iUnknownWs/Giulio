@@ -14,7 +14,7 @@
         <div class="mb-5">
           <label class="form-control">
             <div class="label">
-              <span class="label-text font-medium">Descripcion</span>
+              <span class="label-text font-medium">Descripción</span>
             </div>
             <textarea class="textarea textarea-bordered h-24 textarea-primary bg-white textarea-md"
               placeholder="Descripcion" v-model="description" required></textarea>
