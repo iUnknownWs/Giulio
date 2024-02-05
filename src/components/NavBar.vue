@@ -40,7 +40,7 @@
       <a v-if="!signedin" class="btn hover:bg-base-200" href="/intranet">Intranet</a>
       <a v-if="signedin" class="btn hover:bg-base-200 hidden lg:flex" href="/intranet/blog">Editar Blog</a>
       <a v-if="signedin" class="btn hover:bg-base-200 hidden lg:flex" href="/intranet/map">Editar Mapa</a>
-      <a v-if="signedin" @click="logout" class="btn btn-primary text-white">Cerrar sesion</a>
+      <a v-if="signedin" @click="logout" class="btn btn-primary text-white">Cerrar sesión</a>
     </div>
   </div>
 </template>
