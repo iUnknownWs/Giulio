@@ -31,7 +31,7 @@
           </label>
         </div>
         <div class="flex justify-end mt-8">
-          <button class="btn btn-active btn-primary text-white">
+          <button class="btn btn-active btn-primary text-white" :disabled="disable">
             Enviar Formulario
           </button>
         </div>
@@ -48,6 +48,7 @@ export default {
       name: "",
       image: [],
       form: [],
+      disable: false,
     };
   },
   methods: {
@@ -59,7 +60,8 @@ export default {
       let data = await response.json();
       this.authors = data;
     },
-    handleSubmit(event) {
+    handleSubmit() {
+      this.disable = true;
       const formData = new FormData();
       formData.append("name", this.name);
       formData.append("image", this.image);
