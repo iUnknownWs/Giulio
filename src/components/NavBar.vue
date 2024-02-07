@@ -17,11 +17,11 @@
           <li>
             <a class="hover:bg-base-200 font-bold" href="/contact">Contacto</a>
           </li>
-          <li v-if="signedin">
-            <a class="hover:bg-base-200 font-bold" href="/intranet/blog">Editar Blog</a>
+          <li v-if="signed">
+            <a class="hover:bg-base-200 font-bold" href="/admin/blog">Editar Blog</a>
           </li>
-          <li v-if="signedin">
-            <a class="hover:bg-base-200 font-bold" href="/intranet/map">Editar Mapa</a>
+          <li v-if="signed">
+            <a class="hover:bg-base-200 font-bold" href="/admin/map">Editar Mapa</a>
           </li>
         </ul>
       </div>
@@ -37,10 +37,10 @@
       </ul>
     </div>
     <div class="navbar-end gap-2">
-      <a v-if="!signedin" class="btn hover:bg-base-200" href="/intranet">Intranet</a>
-      <a v-if="signedin" class="btn hover:bg-base-200 hidden lg:flex" href="/intranet/blog">Editar Blog</a>
-      <a v-if="signedin" class="btn hover:bg-base-200 hidden lg:flex" href="/intranet/map">Editar Mapa</a>
-      <a v-if="signedin" @click="logout" class="btn btn-primary text-white">Cerrar sesión</a>
+      <a v-if="!signed" class="btn hover:bg-base-200" href="/admin">Intranet</a>
+      <a v-if="signed" class="btn hover:bg-base-200 hidden lg:flex" href="/admin/blog">Editar Blog</a>
+      <a v-if="signed" class="btn hover:bg-base-200 hidden lg:flex" href="/admin/map">Editar Mapa</a>
+      <a v-if="signed" @click="logout" class="btn btn-primary text-white">Cerrar sesión</a>
     </div>
   </div>
 </template>
@@ -49,7 +49,7 @@
 export default {
   data() {
     return {
-      signedin: localStorage.token ? true : false
+      signed: localStorage.token ? true : false
     }
   },
   methods: {

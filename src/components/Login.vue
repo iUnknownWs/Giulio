@@ -36,7 +36,7 @@
           </div>
           <div class="flex justify-end mt-8">
             <button class="btn btn-active btn-primary text-white">
-              Iniciar Sesion
+              Iniciar Sesión
             </button>
           </div>
         </div>
