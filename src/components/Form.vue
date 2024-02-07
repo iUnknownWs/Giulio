@@ -50,7 +50,7 @@
             <input
               type="file"
               accept="image/*"
-              class="file-input file-input-bordered w-full max-w-xs bg-white"
+              class="file-input file-input-bordered file:text-white w-full max-w-xs bg-white"
               @change="previewFiles"
               required
             />

@@ -24,14 +24,17 @@
             <input
               type="file"
               accept="image/*"
-              class="file-input file-input-bordered w-full max-w-xs bg-white"
+              class="file-input file-input-bordered file:text-white w-full max-w-xs bg-white"
               @change="previewFiles"
               required
             />
           </label>
         </div>
         <div class="flex justify-end mt-8">
-          <button class="btn btn-active btn-primary text-white" :disabled="disable">
+          <button
+            class="btn btn-active btn-primary text-white"
+            :disabled="disable"
+          >
             Enviar Formulario
           </button>
         </div>
