@@ -55,6 +55,10 @@
               required
             />
           </label>
+          <p class="font-medium text-primary text-xs">
+            Aviso: Se recomienda que el archivo este en formato Webp y el mismo
+            no superé 1 MB
+          </p>
         </div>
         <div class="mb-5">
           <label class="form-control w-full max-w-xs">

@@ -61,7 +61,9 @@ const dt = dates.toLocaleDateString("en-GB");
         {description}
       </p>
       <div class="flex justify-end">
-        <button id={id.toString()} class="delete-blog mt-3 btn btn-active btn-primary text-white"
+        <button
+          id={id.toString()}
+          class="delete-blog mt-3 btn btn-active btn-primary text-white"
           >Eliminar</button
         >
       </div>
@@ -69,11 +71,11 @@ const dt = dates.toLocaleDateString("en-GB");
   </div>
 </section>
 <script>
-const deleteButtons = document.querySelectorAll("button.delete-blog");
+  const deleteButtons = document.querySelectorAll("button.delete-blog");
   const deletePost = async (id: number): Promise<void> => {
     try {
       const response = await fetch(
-        `${import.meta.env.PUBLIC_DB}/blogpost/${id}`,
+        `${import.meta.env.PUBLIC_DB}blogpost/${id}`,
         {
           method: "DELETE",
         }
@@ -92,7 +94,7 @@ const deleteButtons = document.querySelectorAll("button.delete-blog");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       const id = parseInt((event.target as HTMLButtonElement).id);
-      deletePost(id);   
+      deletePost(id);
     });
   });
 </script>

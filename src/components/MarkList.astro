@@ -1,0 +1,64 @@
+---
+interface Props {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  publishDate: Date;
+}
+
+const { id, title, description, category, publishDate } = Astro.props;
+const dates = new Date(publishDate);
+const dt = dates.toLocaleDateString("en-GB");
+---
+
+<div class="card w-80 bg-white shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title text-lg">{title}</h2>
+    <p class="font-semibold">
+      Descripción: <br />
+      <span class="font-normal">{description}</span>
+    </p>
+    <p class="capitalize font-semibold">
+      Categoria: <br />
+      <span class="font-normal">{category}</span>
+    </p>
+    <p class="font-semibold">
+      Fecha de publicación: <br />
+      <span class="font-normal">{dt}</span>
+    </p>
+    <div class="card-actions justify-end">
+      <button id={id.toString()} class="delete-marker btn btn-primary"
+        >Eliminar</button
+      >
+    </div>
+  </div>
+</div>
+<script>
+  const deleteButtons = document.querySelectorAll("button.delete-marker");
+  const deleteMarker = async (id: number): Promise<void> => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.PUBLIC_DB}mapmarker/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        console.log("Marcador eliminado exitosamente");
+        location.reload();
+      } else {
+        console.log("Error al eliminar el marcador");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const id = parseInt((event.target as HTMLButtonElement).id);
+      deleteMarker(id);
+    });
+  });
+</script>

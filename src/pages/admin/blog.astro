@@ -1,14 +1,13 @@
 ---
-import type { BlogPost } from "../../env";
+import type { BlogPost} from "../../env";
 import Layout from "../../layouts/Layout.astro";
 import Form from "../../components/Form.vue";
 import BlogAdmin from "../../components/BlogAdmin.astro";
 import AuthForm from "../../components/AuthForm.vue";
 
-
 let blogs: BlogPost[] = [];
 
-await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
+await fetch(`${import.meta.env.PUBLIC_DB}blogpost/`)
   .then((res) => res.json())
   .then((data) => {
     blogs = data;

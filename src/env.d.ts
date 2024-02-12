@@ -11,9 +11,21 @@ export interface BlogPost {
     publishDate: Date;
   }
   
+  export interface Marker {
+    id:             number;
+    author_details: Details;
+    title:          string;
+    description:    string;
+    publishDate:    Date;
+    eventDate:      Date;
+    lat:            number;
+    long:           number;
+    category:       string;
+}
   export interface Details {
     id: number;
     name: string;
     image: string;
     uploadDate?: Date;
   }
+
