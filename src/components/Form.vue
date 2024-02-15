@@ -101,6 +101,7 @@ export default {
       title: "",
       description: "",
       image: [],
+      id: "",
       content: "",
       selauthor: "",
       authors: [],
@@ -119,13 +120,17 @@ export default {
         body: formData,
       })
         .then((response) => {
-          response.json();
           if (response.ok) {
             this.disable = false;
           }
+          return response.json();
         })
         .then((data) => {
+          console.log(data);
           this.data = data;
+          this.id = data.id;
+          console.log(data.id);
+          console.log(this.id);
         })
         .catch((error) => console.error(error));
     },
@@ -139,7 +144,7 @@ export default {
         title: this.title,
         description: this.description,
         author: parseInt(this.selauthor),
-        image: this.data.id,
+        image: this.id,
         content: this.content,
       };
 
