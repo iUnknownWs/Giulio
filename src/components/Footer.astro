@@ -24,7 +24,7 @@
           placeholder="Email@ejemplo.com"
           class="input input-bordered w-48 max-w-xs input-primary bg-white rounded-r-none"
         />
-        <button class="btn btn-primary rounded-l-none">Suscribirme</button>
+        <button id="subBtn" class="btn btn-primary rounded-l-none">Suscribirme</button>
       </div>
     </div>
     <!-- End Col -->
@@ -92,3 +92,26 @@
   </div>
   <!-- End Grid -->
 </footer>
+<script>
+  const subBtn = document.getElementById('subBtn');
+  const email = document.querySelector('input') as HTMLInputElement;
+  subBtn?.addEventListener('click', () => {
+    const emailValue = email.value;
+    console.log(emailValue)
+    if (emailValue) {
+      const url = `${import.meta.env.PUBLIC_DB}newsletter/`;
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: emailValue
+        })
+      }).then((response) => {
+        location.reload();
+        alert('Se ha suscripto correctamente');
+      })
+    }
+  })
+</script>
