@@ -40,7 +40,7 @@ await fetch(`${import.meta.env.PUBLIC_DB}/blogpost/`)
   </div>
   <section class='py-8 mx-auto max-w-screen-2xl px-4 grid grid-cols-1 lg:grid-cols-3'>
     {
-       blogs.slice(0, 5).map((blog) => (
+       blogs.slice(-7, -1).map((blog) => (
            <BlogCard title={blog.title},
                image= {blog.image_details.image},
                alt= {blog.image_details.name},
